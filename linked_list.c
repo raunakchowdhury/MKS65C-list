@@ -2,12 +2,11 @@
 
 void print_list(struct node *node_pointer){
   struct node *current_pointer = node_pointer;
-  while (current_pointer -> next){
-    printf("moo\n" );
+  while (current_pointer != NULL){
     printf("%d -> ", current_pointer -> num);
     current_pointer = current_pointer -> next;
   }
-  printf("%d\n", current_pointer -> num);
+  printf("END \n");
 }
 
 struct node * insert_front(struct node *node_pointer, int num){
@@ -20,11 +19,10 @@ struct node * insert_front(struct node *node_pointer, int num){
 struct node * free_list(struct node *node_pointer){
   struct node *current_pointer = node_pointer;
   struct node *placeholder = node_pointer;
-  while (current_pointer -> next){
+  while (current_pointer){
     free(placeholder);
     current_pointer = current_pointer -> next;
     placeholder = current_pointer;
   }
-  free(placeholder);
-  return node_pointer;
+  return current_pointer;
 }
