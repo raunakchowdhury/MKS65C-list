@@ -20,8 +20,8 @@ struct node * free_list(struct node *node_pointer){
   struct node *current_pointer = node_pointer;
   struct node *placeholder = node_pointer;
   while (current_pointer){
-    free(placeholder);
     current_pointer = current_pointer -> next;
+    free(placeholder);
     placeholder = current_pointer;
   }
   return current_pointer;
